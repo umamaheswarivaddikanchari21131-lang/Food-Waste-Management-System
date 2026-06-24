@@ -1,0 +1,54 @@
+import { useState } from "react";
+import API from "../services/api";
+import "../styles/login.css";
+
+function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] =
+    useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const res = await API.post(
+      "/users/login",
+      {
+        email,
+        password,
+      }
+    );
+
+    localStorage.setItem(
+      "user",
+      JSON.stringify(res.data)
+    );
+
+    alert("Login Success");
+  };
+
+  return (
+    <form className="form" onSubmit={handleLogin}>
+      <h2>Login</h2>
+
+      <input
+        type="email"
+        placeholder="Email"
+        onChange={(e) =>
+          setEmail(e.target.value)
+        }
+      />
+
+      <input
+        type="password"
+        placeholder="Password"
+        onChange={(e) =>
+          setPassword(e.target.value)
+        }
+      />
+
+      <button>Login</button>
+    </form>
+  );
+}
+
+export default Login;
