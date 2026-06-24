@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
-import "../styles/navbar.css";
 
 function Navbar() {
   return (
-    <nav className="navbar">
-      <h2>Food Waste Management</h2>
-
+    <header className="navbar">
       <div>
-        <Link to="/">Home</Link>
-        <Link to="/register">Register</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/foods">Foods</Link>
-        <Link to="/add-food">Add Food</Link>
+        <h2>Food Waste Management</h2>
+        <p>Connecting donors, NGOs, and volunteers to reduce food waste.</p>
       </div>
-    </nav>
+
+      <nav className="navbar-links">
+        <Link to="/">Home</Link>
+        <Link to="/foods">Available Foods</Link>
+        <Link to="/add-food">Donate Food</Link>
+        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/login">Login</Link>
+      </nav>
+    </header>
   );
 }
 
